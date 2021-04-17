@@ -1,3 +1,4 @@
+/*
 const a = "123456";
 const stringLength = a.length;
 const evenOrOdd = stringLength % 2;
@@ -14,3 +15,8 @@ function answer(a) {
 
 console.log(`middle letter is "${answer(a)}"`);
 console.log(`string length is "${stringLength}"`);
+*/
+
+function solution(s) {
+    return s.substr(Math.ceil(s.length / 2) - 1, s.length % 2 === 0 ? 2 : 1);
+}
