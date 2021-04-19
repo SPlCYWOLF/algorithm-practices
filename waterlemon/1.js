@@ -1,3 +1,4 @@
+/*
 const n = 5;
 var words = [];
 
@@ -13,8 +14,15 @@ function solution() {
 }
 
 solution();
+*/
 
+var n = 6;
 
+function solution(n) {
+  console.log(n % 2 === 0? "수박".repeat(n / 2) : "수박".repeat(n / 2) + "수");
+}
+
+solution();
 
 
 
