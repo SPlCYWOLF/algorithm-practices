@@ -1,0 +1,1 @@
+![image-20210825190759472](thought.assets/image-20210825190759472.png)
