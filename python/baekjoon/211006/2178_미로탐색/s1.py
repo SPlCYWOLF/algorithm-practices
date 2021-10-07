@@ -1,5 +1,6 @@
 '''
-
+총 소요시간 1시간 3분
+풀이시간 40분
 thought process: 4분 15초
 dfs 로 찾자.
 방향 델타값 활용해서 이동방향 정하고
@@ -23,14 +24,14 @@ def dfs(r, c, cnt):
         if r+1 == N and c+1 == M:
             ans = cnt
             return
-        
 
     for i in range(4):
         nr = r + dr[i]
         nc = c + dc[i]
 
+
         if 0 <= nr < N and 0 <= nc < M:
-            if arr[nr][nc] == '1' and visited[nr][nc] == 0:
+            if arr[nr][nc] == '1' and visited[nr][nc] == 0 and cnt+1 < ans:     # 가지치기를 어떻게 할까..
                 visited[nr][nc] = 1
                 recur += 1
                 dfs(nr, nc, cnt+1)
