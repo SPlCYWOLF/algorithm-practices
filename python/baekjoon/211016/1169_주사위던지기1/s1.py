@@ -12,7 +12,7 @@ import sys
 sys.stdin = open('input.txt')
 
 
-def perm(r):
+def perm(r):            # 중복순열
     if r == N:
         print(*ans)
         pass
@@ -21,7 +21,7 @@ def perm(r):
             ans[r] = i
             perm(r+1)
 
-def comb(r):       # combination
+def comb(r):            # 중복조합
     if r == N:
         a = tuple(sorted(ans2))
         if a not in tmp:
@@ -32,7 +32,7 @@ def comb(r):       # combination
             ans2[r] = i
             comb(r+1)
 
-def molla(r):
+def molla(r):       # 순열
     if r == N:
         print(*ans3)
     else:
@@ -40,6 +40,7 @@ def molla(r):
             ans3[r] = i
             if ans3[r] != ans3[r-1] and ans3[r] != ans3[r-2]:
                 molla(r+1)
+            ans3[r] = 0
 
 for tc in range(1, int(input())+1):
     N, M = map(int, input().split())
@@ -53,3 +54,22 @@ for tc in range(1, int(input())+1):
         print('---------------------------')
     else:
         molla(0)
+        print('---------------------------')
+
+
+
+def perm_visited(k):
+    if k == 3:
+        print(visited)
+        return
+    else:
+        for i in range(1, 4):
+            visited[k] = i
+            if visited[k] != visited[k-1] and visited[k] != visited[k-2]:
+                perm_visited(k+1)
+            visited[k] = 0
+
+
+nums = [1, 2, 3]
+visited = [0, 0, 0]
+perm_visited(0)
