@@ -3,10 +3,7 @@ sys.stdin = open('input.txt')
 
 
 '''
-itertools 의 combination 활용해보려 했지만 30분 투자해도 안되서 포기
 dfs 활용하여 각 부분집합 요소들의 원소들의 합 구하기
-
-
 '''
 
 
@@ -38,7 +35,7 @@ dfs 활용하여 각 부분집합 요소들의 원소들의 합 구하기
 #                 dfs(score+nums[i], k+1)
 #                 visited[i] = 0
 
-def dfs(score, k):            # 중복조합
+def dfs(score, k):            # 부분집합
     if k == N:
         return
 
@@ -59,6 +56,6 @@ for tc in range(1, int(input())+1):
     visited = [0] * N
     ans = set()
     
-    dfs(0, 0)    # 점수 배점들, 현재 점수, dfs 깊이
-    # print('#{} {}'.format(tc, len(ans)+1))
-    print(ans)
+    dfs(0, 0)    # 현재 점수, dfs 깊이
+    print('#{} {}'.format(tc, len(ans)+1))
+    # print(ans)
