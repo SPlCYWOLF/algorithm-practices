@@ -15,7 +15,7 @@ for loop 로 맨 위 row 하나씩 순회.
 column 에서도 같은것 반복
 
 수정사항:
-# while 루프 안에 while 루프로 재구성 해보자
+# 겹쳐지는 구간 어떻게 해야함..
 '''
 
 # def checker(r, c, height, k):
@@ -56,13 +56,19 @@ def possible_down(r, c, height):
             tmp += 1
             if tmp == X:
                 return True
+            if (r + tmp) > N-1:
+                return False
             height = new_height
             new_height = road[r + tmp][c]
-
     return False
+
 
 def checker(r, c, height):
     global ans
+    if r == N-1:
+        ans += 1
+        return
+
     if (r + 1) < N:
         possible_up = False
         tmp = 1
@@ -75,9 +81,10 @@ def checker(r, c, height):
             if tmp == X:                    # 경사로 세울 수 있으면
                 possible_up = True          # 올라갈 수 있다!
 
-        if r + tmp == N-1 and new_height == height:                            # 끝까지 갔으면 정답 추가
+        if r + tmp == N-1 and new_height == height:        # 끝까지 갔으면 정답 추가
             ans += 1
             return
+
         elif height+1 == new_height:                # 새로운 높이가 더 높을때
             if possible_up:
                 checker(r+tmp, c, new_height)
@@ -90,14 +97,14 @@ for tc in range(1, int(input())+1):
 
     N, X = map(int, input().split())
     road = tuple(tuple(map(int, input().split())) for _ in range(N))
-    if tc == 2:
-        ans = 0
-        for i in range(1):
-            for j in range(N):
-                checker(i, j, road[i][j])    # row column 좌표, 시작지점 원소값, 총 이동 거리
+    # if tc == 6:
+    ans = 0
+    for i in range(1):
+        for j in range(N):
+            checker(i, j, road[i][j])    # row column 좌표, 시작지점 원소값, 총 이동 거리
 
-        road = tuple(zip(*road))
-        for i in range(1):
-            for j in range(N):
-                checker(i, j, road[i][j])    # row column 좌표, 시작지점 원소값, 총 이동 거리
-        print('#{} {}'.format(tc, ans))
+    road = tuple(zip(*road))
+    for i in range(1):
+        for j in range(N):
+            checker(i, j, road[i][j])    # row column 좌표, 시작지점 원소값, 총 이동 거리
+    print('#{} {}'.format(tc, ans))
