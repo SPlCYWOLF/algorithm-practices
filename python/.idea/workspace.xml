@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d64b22d1-6ba9-41e0-85ad-c39fbf95e728" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SWEA/211103/4014_활주로건설/s1.py" beforeDir="false" afterPath="$PROJECT_DIR$/SWEA/211103/4014_활주로건설/s1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWEA/211201/0810~0811_review/1206_View/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWEA/211201/0810~0811_review/1206_View/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWEA/211201/0810~0811_review/1206_View/s1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWEA/211201/0810~0811_review/1208_Flatten/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWEA/211201/0810~0811_review/1208_Flatten/s1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWEA/211201/0810~0811_review/4831_전기버스/input.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SWEA/211201/0810~0811_review/4831_전기버스/s1.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,7 +80,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/SWEA/211103/4014_활주로건설/s1.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="567">
+                <state relative-caret-position="2407">
                   <caret line="83" column="59" selection-start-line="83" selection-start-column="59" selection-end-line="83" selection-end-column="59" />
                 </state>
               </provider>
@@ -438,10 +443,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SWEA/211103/4014_활주로건설/s1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
+        <state relative-caret-position="2407">
           <caret line="83" column="59" selection-start-line="83" selection-start-column="59" selection-end-line="83" selection-end-column="59" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SWEA/211203/0811_review/1954_달팽이/s1.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/SWEA/211103/4014_활주로건설/s2.py">
       <provider selected="true" editor-type-id="text-editor">
