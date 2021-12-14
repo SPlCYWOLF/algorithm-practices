@@ -1,10 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
 
-# 일단 인접 리스트로 2진트리 생성
-# dfs 느낌으로 13에서 출발해서 인접한 노드들 방문하다가
-# 현재 위치에서 노드의 크기가 줄어들면 위로 간거니까 부모 노드인거 체크
-
 
 def search_ance(n):
     s = tree[n][2]
@@ -36,6 +32,7 @@ for tc in range(1, int(input())+1):
     p1, p2 = [], []
     cnt = 0
     
+    # 1. 인접 리스트로 트리 구현
     for i in range(E):
         p = temp[i*2]
         c = temp[i*2+1]
@@ -45,9 +42,14 @@ for tc in range(1, int(input())+1):
             tree[p][1] = c
         tree[c][2] = p
     
+    # 2. 각 노드의 조상들 찾아서 리스트에 모으기
     p1 = search_ance(n1)
     p2 = search_ance(n2)
+    
+    # 3. 공통된 조상 찾기 (가장 가까운 조상별로 리스트에 들어가 있는걸 참고)
     common_ance = find_common_ance(p1, p2)
+    
+    # 4. 트리 순회 활용해서 노드 개수 카운트
     pre_order(common_ance)    
     
     print('#{} {} {}'.format(tc, common_ance, cnt))
