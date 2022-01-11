@@ -13,3 +13,8 @@ def solution(numbers):
     answer = ''.join(numbers)
     
     return answer
+    
+    numbers = [3, 30, 34, 5, 9] 
+
+    
+    

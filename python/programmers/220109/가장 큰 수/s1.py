@@ -1,6 +1,5 @@
 def comb(k, num, v, t):
     global answer
-
     if len(answer) and num[0] < max(answer)[0]:
         return
 
@@ -12,7 +11,7 @@ def comb(k, num, v, t):
             v[i] = 1
             comb(k+1, num+t[i], v, t)
             v[i] = 0
-    
+
 
 def solution(numbers):
     global answer
@@ -30,3 +29,5 @@ answer = []
 numbers = [3, 30, 34, 5, 9]
 
 print(solution(numbers))
+
+# 왠만하면 재귀는 쓰지말자.
