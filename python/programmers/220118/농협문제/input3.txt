@@ -1,0 +1,10 @@
+3번 문제
+input
+["baabcc","bbbbcc","ababbb","bbbacc","ccbcac","bcccca"], t=2
+["bcacdc","cabacd","abccdc","aaabbb","ccdeee","xxyezz"], t=3
+["aaa","aaa","aaa"], t=1
+
+output
+3
+2
+0
