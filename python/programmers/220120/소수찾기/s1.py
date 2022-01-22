@@ -1,7 +1,6 @@
 from itertools import permutations
 
 def go(x):
-    global wow
     if int(''.join(x)) % 2 and int(''.join(x)) % 3 and int(''.join(x)) != 1:
         # print(''.join(x))
         if ''.join(x).lstrip('0') not in wow:
