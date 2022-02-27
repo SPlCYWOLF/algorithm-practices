@@ -8,21 +8,21 @@ height = list(map(int, input().split()))
 ans = 0
 
 arr = [[0]*W for _ in range(H)]
+# 2차원 배열 그리기 (
 for i in range(H):
     for j in range(W):
         if height[j] <= i:
             arr[i][j] = 1
 print(arr)
 
-# 2차원 배열 탐색하며 고이지 않은 부분 제거
+# 2차원 배열 탐색하며 고인 부분 하나하나 ans 에 축적 시킴
 for i in range(H-1, -1, -1):
-    wall, cnt, go = 0, 0, False
+    wall, cnt = 0, 0
     if arr[i].count(0) <= 1:
         pass
     else:
         for j in range(W-1, -1, -1):
             if arr[i][j] == 0:
-                go = True
                 wall += 1
             if wall == 2:
                 if cnt == 0:
