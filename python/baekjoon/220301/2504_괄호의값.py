@@ -28,13 +28,12 @@ for i in range(len(bracket)):
         stack.pop()
         tmp //= 2
 
-    else:
+    elif bracket[i] == "]":
         if not stack or stack[-1] == "(":
             answer = 0
             break
         if bracket[i-1] == "[":
             answer += tmp
-
         stack.pop()
         tmp //= 3
 
@@ -51,8 +50,10 @@ else:
 
 # ( = 2   [ = 3
 # +   x   불가능   총 세가지 경우
-# 닫는 괄호이고, 바로 직전 괄호가 닫는 괄호였으면 ans 에서 곱한다
-# 닫는 괄호이고, 바로 직전 괄호가 여는 괄호면 ans 에서 더한다
+# 현재 닫는 괄호이고, 스택 마지막 괄호가 여는 괄호고, 바로 직전이 닫는 괄호면 ans 에서 괄호값 만큼 곱하고 스택에서 빼고
+# 현재 닫는 괄호이고, 스택 마지막 괄호가 여는 괄호면 ans 에서 더하고 스택에서 빼고
+# 현재 여는 괄호고, 바로 직전 닫는 괄호면 ans 를 temp리스트에 넣고 ans 0 으로 초기화 후 괄호 스택에 넣기
+# 위에 상황 말고 현재 여는 괄호면 바로 stack에 넣기
 # 스택 활용
 
 # import sys
@@ -84,3 +85,5 @@ else:
 #         else:                                   # 3. 무효한 경우 0점 처리 후 종료
 #             ans = 0
 #             break
+#
+# print(ans)

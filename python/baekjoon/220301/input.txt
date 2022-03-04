@@ -1,1 +1,8 @@
 (()[[]])([])
+tmp = 0
+ans = 10
+stack = (
+
+tmp = 2
+ans = 40
+stack =

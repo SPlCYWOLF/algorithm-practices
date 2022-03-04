@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d64b22d1-6ba9-41e0-85ad-c39fbf95e728" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baekjoon/220301/2504_괄호의값.py" beforeDir="false" afterPath="$PROJECT_DIR$/baekjoon/220301/2504_괄호의값.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baekjoon/220301/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/baekjoon/220301/input.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +19,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/baekjoon/220301/input.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+                <state relative-caret-position="203">
+                  <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -39,8 +41,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/baekjoon/220301/2504_괄호의값.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="203">
-                  <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+                <state relative-caret-position="406">
+                  <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -277,8 +279,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2407809" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1670282" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.36442515" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.1778742" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.12472885" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -304,14 +306,13 @@
           <line>39</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/baekjoon/220301/2504_괄호의값.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="ans" language="Python" />
-        <watch expression="locked" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -588,17 +589,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baekjoon/220301/2504_괄호의값.py">
+    <entry file="file://$PROJECT_DIR$/baekjoon/220301/input.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
-          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baekjoon/220301/input.txt">
+    <entry file="file://$PROJECT_DIR$/baekjoon/220301/2504_괄호의값.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+        <state relative-caret-position="406">
+          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
         </state>
       </provider>
     </entry>
