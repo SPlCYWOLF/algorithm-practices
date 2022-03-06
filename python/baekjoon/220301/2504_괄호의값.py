@@ -24,18 +24,18 @@ for i in range(len(bracket)):
             answer = 0
             break
         if bracket[i-1] == "(":
-            answer += tmp
+            answer += tmp           # 괄호 사이의 값 덧셈 처리
         stack.pop()
-        tmp //= 2
+        tmp //= 2                   # 포인트
 
     elif bracket[i] == "]":
         if not stack or stack[-1] == "(":
             answer = 0
             break
         if bracket[i-1] == "[":
-            answer += tmp
+            answer += tmp           # 괄호 사이의 값 덧셈 처리
         stack.pop()
-        tmp //= 3
+        tmp //= 3                   # 포인트
 
 if stack:
     print(0)
