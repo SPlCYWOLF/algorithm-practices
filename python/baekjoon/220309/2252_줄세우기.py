@@ -36,7 +36,6 @@ while queue:
     print(student, end = ' ')
 
 
-
 # # 패작1 소요시간 58분
 # N, M = map(int, input().split())    # 1부터 N번까지 학생들의 번호있음. M은 키를 비교한 횟수 # A가 B앞에 서야함
 # temp = []
