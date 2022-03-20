@@ -2,6 +2,13 @@ import sys
 sys.stdin = open('input.txt')
 
 
+
+# 3차 시도 실패 소요 시간 40분
+# 오타 발견으로 해결하나 싶었지만, 시간초과.
+# 정답은 나오는걸로 확인됨
+# 고로 다른 접근법: BFS활용하여 재도전
+
+
 N = int(input())
 road = [list(map(int, input().split())) for _ in range(N)]
 ans = 0
@@ -18,7 +25,7 @@ dr_r = (0, 1)
 dc_r = (1, 1)
 # 파이프 상태 세로일때
 dr_c = (1, 1)
-dr_c = (0, 1)
+dc_c = (0, 1)
 # 파이프 상태 대각선일때
 dr_d = (0, 1, 1)
 dc_d = (1, 1, 0)
@@ -39,7 +46,7 @@ def dfs(r, c, p):
             if 0 <= nr < N and 0 <= nc < N:
                 if i == 0 and road[nr][nc] == 0:
                     dfs(nr, nc, 0)
-                elif i == 1 and road[nr][nc] == 0 and road[nr-1][nc] == 0 and road[nr][nc-1] == 0:
+                elif i == 1 and road[nr][nc] + road[nr-1][nc] + road[nr][nc-1] == 0:
                     dfs(nr, nc, 1)
     elif p == 1:
         for i in range(3):
@@ -49,24 +56,32 @@ def dfs(r, c, p):
             if 0 <= nr < N and 0 <= nc < N:
                 if i == 0 and road[nr][nc] == 0:
                     dfs(nr, nc, 0)
-                elif i == 1 and road[nr][nc] == 0 and road[nr-1][nc] == 0 and road[nr][nc-1] == 0:
+                elif i == 1 and road[nr][nc] + road[nr-1][nc] + road[nr][nc-1] == 0:
                     dfs(nr, nc, 1)
                 elif i == 2 and road[nr][nc] == 0:
                     dfs(nr, nc, 2)
     elif p == 2:
         for i in range(2):
-            nr = r+dr_r[i]
-            nc = c+dc_r[i]
+            nr = r+dr_c[i]
+            nc = c+dc_c[i]
 
             if 0 <= nr < N and 0 <= nc < N:
                 if i == 0 and road[nr][nc] == 0:
                     dfs(nr, nc, 2)
-                elif i == 1 and road[nr][nc] == 0 and road[nr-1][nc] == 0 and road[nr][nc-1] == 0:
+                elif i == 1 and road[nr][nc] + road[nr-1][nc] + road[nr][nc-1] == 0:
                     dfs(nr, nc, 1)
 
 dfs(0, 1, 0)    # row, column, position
 
 print(ans)
+
+
+
+
+
+
+
+
 
 # 1차 시도 소요시간 30분
 # dfs 로 풀면 될듯 함
