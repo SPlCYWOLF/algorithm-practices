@@ -2,6 +2,32 @@ import sys
 sys.stdin = open('input.txt')
 
 
+readline = sys.stdin.readline
+
+N = int(readline().rstrip())
+
+grid = [[2] * (N + 2)] + [[2] + list(map(int, readline().rstrip().split())) + [2] for _ in range(N)] + [[2] * (N + 2)]  # 지도 받기
+# 파이프 경우의 수. 0이면 가로 방향으로 온 경우의 수, 2면 세로 방향으로 온 경우의 수, 1이면 대각선 방향으로 온 경우의 수
+lst = [[(0, 0, 0)] * (N + 2) for _ in range(N + 2)]
+lst[1][2] = (1, 0, 0)
+
+for r in range(1, N + 1):
+    for c in range(3, N + 1):
+        if grid[r][c] != 0:  # 벽이라면 자동으로 모든 경우의 수가 (0, 0, 0)
+            continue
+
+        if grid[r - 1][c] + grid[r][c - 1] + grid[r][c] == 0:  # 1번 방향으로 올 경우의 수
+            lst[r][c] = (lst[r][c][0], sum(lst[r - 1][c - 1]), lst[r][c][2])
+
+        lst[r][c] = (lst[r][c - 1][0] + lst[r][c - 1][1], lst[r][c][1], lst[r][c][2])
+
+        lst[r][c] = (lst[r][c][0], lst[r][c][1], lst[r - 1][c][1] + lst[r - 1][c][2])
+
+print(sum(lst[N][N]))
+
+
+
+
 
 # 3차 시도 실패 소요 시간 40분
 # 오타 발견으로 해결하나 싶었지만, 시간초과.
