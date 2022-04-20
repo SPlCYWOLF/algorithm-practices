@@ -24,27 +24,25 @@ q.append(N)
 cnt = 0
 min_num = 100000
 ans = deque()
-while q:
-    cur = q.popleft()
-    if dist[K] < 0:
-        if cur+1 < 100001 and not visited[cur+1]:
-            visited[cur+1] += 1
-            dist[cur+1] = dist[cur] + 1
-            q.append(cur+1)
-        if cur-1 >= 0 and not visited[cur-1]:
-            visited[cur-1] += 1
-            dist[cur-1] = dist[cur] + 1
-            q.append(cur-1)
-        if cur*2 < 100001 and not visited[cur*2]:
-            visited[cur*2] += 1
-            dist[cur*2] = dist[cur] + 1
-            q.append(cur*2)
-    if cur+1 == K or cur-1 == K or cur*2 == K:
-        cnt += 1
+# while q:
+#     cur = q.popleft()
+#     if cur != K:
+#         if cur+1 < 100001 and not visited[cur+1]:
+#             visited[cur+1] += 1
+#             dist[cur+1] = dist[cur] + 1
+#             q.append(cur+1)
+#         if cur-1 >= 0 and not visited[cur-1]:
+#             visited[cur-1] += 1
+#             dist[cur-1] = dist[cur] + 1
+#             q.append(cur-1)
+#         if cur*2 < 100001 and not visited[cur*2]:
+#             visited[cur*2] += 1
+#             dist[cur*2] = dist[cur] + 1
+#             q.append(cur*2)
+#     else:
+#         cnt += 1
 
 
-print(dist)
-print(visited)
 # while q:
 #     cur = q.popleft()
 #     if dist[K] < 0:
@@ -62,6 +60,7 @@ print(visited)
 #             q.append(cur*2)
 #     if cur+1 == K or cur-1 == K or cur*2 == K:
 #         cnt += 1
-print()
+
 print(dist[K])
 print(cnt)
+print(visited[K])
