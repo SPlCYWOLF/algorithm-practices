@@ -8,6 +8,7 @@
 
 
 # 30분시간 지나서 일단 다른사람 코드로 배우기 위해 스크랩
+# 60분 추가로 봐도 아직 이해 못함
 import sys
 
 N = int(sys.stdin.readline())
