@@ -8,10 +8,10 @@
 
 
 # 30분시간 지나서 일단 다른사람 코드로 배우기 위해 스크랩
-# 60분 추가로 봐도 아직 이해 못함
+# 30분 추가로 봐도 아직 이해 못함
 import sys
 
-N = int(sys.stdin.readline())
+N = int(sys.stdin.readline())       # 왜 sys & stdin & readline() 쓰는걸까?
 
 day = N
 T, P = [], []
@@ -23,9 +23,8 @@ for i in range(N):
     P.append(temp[1])
 
 for i in range(0, N):
-    if T[i] <= N - i:
-        dp[i + T[i]] = max(dp[i + T[i]], dp[i] + P[i])
+    if T[i] <= N - i:       # 일할 날이 남아있는 경우
+        dp[i + T[i]] = max(dp[i + T[i]], dp[i] + P[i])      # 다음에 일할 수 있는 날에 받은 pay를 입력
 
-    dp[i + 1] = max(dp[i + 1], dp[i])
-
-print(dp[N])
+    dp[i + 1] = max(dp[i + 1], dp[i])                       # 각각 시작한 위치를 다르게 잡아서 pay가 가장 큰 것을 기록
+print(dp[N])                                                # 마지막 날에 받게되는 최고 pay.
