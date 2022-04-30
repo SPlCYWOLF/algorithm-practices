@@ -4,6 +4,7 @@ sys.stdin = open('input.txt')
 # 패작 1
 # 소요시간 80분
 # dfs + memoization 으로 풀이시도
+# 아직 이해 안됨
 
 def dfs(w, v, cw, cv, item):
     global ans
