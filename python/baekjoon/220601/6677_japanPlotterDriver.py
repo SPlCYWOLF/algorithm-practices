@@ -1,5 +1,4 @@
 import sys
-import pandas as pd
 sys.stdin = open('input.txt')
 
 # 소요시간 약 4시간 ㅇㅅㅇ;
@@ -22,9 +21,11 @@ def handle_line(x1, y1, x2, y2):
         while bx != sx and by != sy:
             if canvas[sy][sx] == "/":
                 canvas[sy][sx] = "x"
+            elif canvas[sy][sx] == "x":
+                canvas[sy][sx] = "x"
             elif canvas[sy][sx] == mark:
-                pass
-            elif canvas[sy][sx]:
+                canvas[sy][sx] = mark
+            elif canvas[sy][sx] and canvas[sy][sx] != " ":
                 canvas[sy][sx] = "*"
             else:
                 canvas[sy][sx] = mark
@@ -37,9 +38,11 @@ def handle_line(x1, y1, x2, y2):
         while by != sy:
             if canvas[sy][x1] == "-":
                 canvas[sy][x1] = "+"
+            elif canvas[sy][x1] == "+":
+                canvas[sy][x1] = "+"
             elif canvas[sy][x1] == mark:
-                pass
-            elif canvas[sy][x1]:
+                canvas[sy][x1] = mark
+            elif canvas[sy][x1] and canvas[sy][x1] != " ":
                 canvas[sy][x1] = "*"
             else:
                 canvas[sy][x1] = mark
@@ -51,9 +54,11 @@ def handle_line(x1, y1, x2, y2):
         while bx != sx:
             if canvas[y1][sx] == "|":
                 canvas[y1][sx] = "+"
+            elif canvas[y1][sx] == "+":
+                canvas[y1][sx] = "+"
             elif canvas[y1][sx] == mark:
-                pass
-            elif canvas[y1][sx]:
+                canvas[y1][sx] = mark
+            elif canvas[y1][sx] and canvas[y1][sx] != " ":
                 canvas[y1][sx] = "*"
             else:
                 canvas[y1][sx] = mark
@@ -64,9 +69,11 @@ def handle_line(x1, y1, x2, y2):
         while bx != sx and by != sy:
             if canvas[sy][bx] == "\\":
                 canvas[sy][bx] = "x"
+            elif canvas[sy][bx] == "x":
+                canvas[sy][bx] = "x"
             elif canvas[sy][bx] == mark:
-                pass
-            elif canvas[sy][bx]:
+                canvas[sy][bx] = mark
+            elif canvas[sy][bx] and canvas[sy][bx] != " ":
                 canvas[sy][bx] = "*"
             else:
                 canvas[sy][bx] = mark
@@ -78,7 +85,7 @@ def handle_text(x, y, txt):
     txt = list(txt)
     for i in range(len(txt)):
         if x + i <= W:
-            if canvas[y][x+i]:
+            if canvas[y][x+i] and canvas[y][x+i] != " ":
                 canvas[y][x+i] = "*"
             else:
                 canvas[y][x+i] = txt[i]
@@ -87,12 +94,12 @@ def handle_clear(x1, y1, x2, y2):
     bx, by, sx, sy = max(x1, x2), max(y1, y2), min(x1, x2), min(y1, y2)
     for i in range(sy, by+1):
         for j in range(sx, bx+1):
-            canvas[i][j] = ""
+            canvas[i][j] = " "
 
 def handle_point(x, y):
     if canvas[y][x] == "o":
-        pass
-    elif canvas[y][x]:
+        canvas[y][x] = "o"
+    elif canvas[y][x] and canvas[y][x] != " ":
         canvas[y][x] = "*"
     else:
         canvas[y][x] = "o"
@@ -105,19 +112,22 @@ def draw_frame():
         canvas[0][j], canvas[-1][j] = "-", "-"
 
 def handle_print():
+    global temp
     draw_frame()
-    df = pd.DataFrame(canvas)
-    print(df)
-    print()
+    if temp:
+        print()
+    temp += 1
+    for i in range(H+2):
+        print("".join(canvas[i]))
 
-
+temp = 0
 while True:
     W, H = map(int, input().split())
 
     if W == 0 and H == 0:
         break
 
-    canvas = list([""] * (W+2) for _ in range(H+2))
+    canvas = list([" "] * (W+2) for _ in range(H+2))
 
     printed = False
     while not printed:
@@ -128,7 +138,6 @@ while True:
             handle_text(int(command[1]), int(command[2]), command[3])
         elif command[0] == "CLEAR":
             handle_clear(int(command[1]), int(command[2]), int(command[3]), int(command[4]))
-            pass
         elif command[0] == "POINT":
             handle_point(int(command[1]), int(command[2]))
         else:
