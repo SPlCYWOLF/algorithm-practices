@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d64b22d1-6ba9-41e0-85ad-c39fbf95e728" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baekjoon/220613/11724_연결요소의개수.py" beforeDir="false" afterPath="$PROJECT_DIR$/baekjoon/220613/11724_연결요소의개수.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/baekjoon/220613/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/baekjoon/220613/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baekjoon/220616/10026_cowart.py" beforeDir="false" afterPath="$PROJECT_DIR$/baekjoon/220616/10026_cowart.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +19,16 @@
             <entry file="file://$PROJECT_DIR$/baekjoon/220616/input.txt">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="58">
-                  <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+                  <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/basics/220617/input.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="87">
+                  <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
                 </state>
               </provider>
             </entry>
@@ -32,7 +40,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/baekjoon/220613/11724_연결요소의개수.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-87">
+                <state relative-caret-position="87">
                   <caret line="3" selection-start-line="3" selection-end-line="3" />
                 </state>
               </provider>
@@ -41,7 +49,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/baekjoon/220615/4963_howmanyislands.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="609">
+                <state relative-caret-position="580">
                   <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
                   <folding>
                     <element signature="e#0#10#0" expanded="true" />
@@ -53,8 +61,22 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/baekjoon/220616/10026_cowart.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="290">
-                  <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+                <state relative-caret-position="232">
+                  <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+                  <folding>
+                    <element signature="e#0#10#0" expanded="true" />
+                    <element signature="e#150#494#0" />
+                    <element signature="e#535#1221#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/basics/220617/demo_problem.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="319">
+                  <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -82,8 +104,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/baekjoon/220218/14719_빗물.py" />
-        <option value="$PROJECT_DIR$/baekjoon/220218/14719_빗물2.py" />
         <option value="$PROJECT_DIR$/baekjoon/220218/input.txt" />
         <option value="$PROJECT_DIR$/baekjoon/220227/input.txt" />
         <option value="$PROJECT_DIR$/baekjoon/220227/1700_멀티탭스케줄링.py" />
@@ -132,6 +152,8 @@
         <option value="$PROJECT_DIR$/baekjoon/220613/11724_연결요소의개수.py" />
         <option value="$PROJECT_DIR$/baekjoon/220615/input.txt" />
         <option value="$PROJECT_DIR$/baekjoon/220615/4963_howmanyislands.py" />
+        <option value="$PROJECT_DIR$/basics/220617/input.txt" />
+        <option value="$PROJECT_DIR$/basics/220617/demo_problem.py" />
         <option value="$PROJECT_DIR$/baekjoon/220616/10026_cowart.py" />
       </list>
     </option>
@@ -249,7 +271,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="6677_japanPlotterDriver" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="demo_problem" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -257,11 +279,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baekjoon/220601" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/basics/220617" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baekjoon/220601/6677_japanPlotterDriver.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/basics/220617/demo_problem.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -273,10 +295,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.10026_cowart" />
+        <item itemvalue="Python.demo_problem" />
         <item itemvalue="Python.4963_howmanyislands" />
         <item itemvalue="Python.11724_연결요소의개수" />
         <item itemvalue="Python.1172_연결요소의개수" />
-        <item itemvalue="Python.6677_japanPlotterDriver" />
       </list>
     </recent_temporary>
   </component>
@@ -308,9 +330,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -413,16 +435,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/baekjoon/220314/17070_파이프옮기기1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baekjoon/220314/1062_가르침.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/baekjoon/220314/1038_감소하는수.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
@@ -676,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baekjoon/220616/input.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/baekjoon/220601/6677_japanPlotterDriver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
@@ -690,9 +695,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/baekjoon/220613/11724_연결요소의개수.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/baekjoon/220615/4963_howmanyislands.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
+        <state relative-caret-position="580">
           <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -700,17 +712,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baekjoon/220613/11724_연결요소의개수.py">
+    <entry file="file://$PROJECT_DIR$/basics/220617/input.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="87">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/basics/220617/demo_problem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baekjoon/220616/input.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/baekjoon/220616/10026_cowart.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        <state relative-caret-position="232">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#150#494#0" />
+            <element signature="e#535#1221#0" />
+          </folding>
         </state>
       </provider>
     </entry>
