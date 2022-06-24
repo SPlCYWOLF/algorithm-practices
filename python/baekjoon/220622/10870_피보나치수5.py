@@ -1,8 +1,8 @@
 import sys
 sys.stdin = open('input.txt')
 
-N = int(input())
 
+N = int(input())
 dp = [0] * 21
 dp[1] = 1
 
