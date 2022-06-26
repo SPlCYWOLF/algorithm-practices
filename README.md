@@ -18,9 +18,9 @@ In other words, the goal is to solve at least one algorithm question everyday.
 
 ## How I do
 
-The questions are mainly from <a href="https://www.acmicpc.net/">Baekjoon</a> website, and <a href="https://swexpertacademy.com/main/main.do">SWEA</a> website.
+The questions are from <a href="https://www.acmicpc.net/">Baekjoon</a>, <a href="https://programmers.co.kr/learn/challenges">Programmers</a>, and <a href="https://swexpertacademy.com/main/main.do">SWEA</a> website.
 
-As for now, python and Visual Studio Code (IDE) are mainly used to solve the problems.
+As for now, python and Pycharm (IDE) are mainly used to solve the problems.
 
 However, solutions using Vanilla-JS is on the way as well.
 

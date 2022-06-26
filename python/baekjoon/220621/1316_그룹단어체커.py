@@ -1,0 +1,26 @@
+import sys
+sys.stdin = open('input.txt')
+
+N = int(input())
+ans = 0
+
+for i in range(N):
+    word = input()                          # 1. 각 단어 받아오기
+    flag = word[0]                          # 2. 첫 기준 알파벳 지정
+    archive = []                            # 3. 단어마다 활용된 알파벳 저장소 선언
+    for j in range(len(word)):
+        if word[j] not in archive:          # 4-1. 해당 알파벳이 저장소에 없고
+            if flag != word[j]:             # 5-1. 기준 알파벳과 다르고
+                if j == len(word)-1:        # 6-1. 현재 알파벳이 마지막 알파벳이면 (무사히 마지막 까지 loop 돌았으면)
+                    ans += 1                # 7-1. 그룹 단어 확정
+                else:                       # 6-2. 현재 알파벳이 마지막 알파벳이 아니라면
+                    archive.append(flag)    # 7-2. 활용된 알파벳 저장소에 저장
+                    flag = word[j]          # 8-1. 알파벳 기준점 최신화
+            else:                           # 5-2. 기준 알파벳과 동일하고
+                if j == len(word)-1:        # 6-3. 현재 알파벳이 마지막 알파벳이면 (무사히 마지막 까지 loop 돌았으면)
+                    ans += 1                # 7-3. 그룹 단어 확정
+                continue
+        else:                               # 4-2. 해당 알파벳이 저장소에 이미 있다면 (이미 활용 되었다면)
+            break                           # 5-3. 그룹단어 탈락 확정, 고로 loop 중단 후 다음 단어로 넘어감
+
+print(ans)
