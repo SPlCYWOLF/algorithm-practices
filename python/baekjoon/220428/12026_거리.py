@@ -3,7 +3,7 @@
 import sys
 sys.stdin = open('input.txt')
 
-def dfs(b, cur, k, check):
+def dfs(b, cur, k, check):      # 현재 블록 정보, 현재 위치, 누적된 이동 에너지, BOJ 모두 방문 여부
     global ans, memo
     if cur == N and len(check) == 3:
         ans = min(ans, k)
@@ -17,7 +17,7 @@ def dfs(b, cur, k, check):
     for i in range(cur, N):
 
         if b != 3 and blocks[i] == b + 1:
-            if blocks[i] not in check:
+            if blocks[i] not in check:      # 순서를 정확히 check 하려면 reset 과정 필요하지않을까(딕서녀리 활용 check) - 수민님
                 check.append(blocks[i])
             energy = (i+1) - cur
             memo[i+1] = min(memo[i+1], k + energy*energy)
