@@ -5,10 +5,11 @@ N = int(input())
 nums = list(map(int, input().split()))                  # O(N)
 s_no_overlap_nums = sorted(set(nums))                   # O(NlogN) + O(N) = O(NlogN)
 
-for i in range(N):                                      # O(N)
-    print(s_no_overlap_nums.index(nums[i]), end=" ")    # O(1)
 
-# total = O(NlogN) 이것도 통과 안되는걸 보면 O(N) 으로 풀어야된다는건데.. 너무하네 ㅇㅅㅇ
+for i in range(N):                                      # O(N)
+    print(s_no_overlap_nums.index(nums[i]), end=" ")    # O(1) + O(1)
+# total = O(NlogN)
+# 이것도 통과 안되는걸 보면 O(N) 으로 풀어야된다는건데.. 너무하네 ㅇㅅㅇ
 
 
 
