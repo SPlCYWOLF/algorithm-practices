@@ -9,7 +9,7 @@ s_no_overlap_nums = sorted(set(nums))                   # O(NlogN) + O(N) = O(Nl
 for i in range(N):                                      # O(N)
     print(s_no_overlap_nums.index(nums[i]), end=" ")    # O(1) + O(1)
 # total = O(NlogN)
-# 이것도 통과 안되는걸 보면 O(N) 으로 풀어야된다는건데.. 너무하네 ㅇㅅㅇ
+# 이것도 통과 안되는걸 보면 O(N) 으로 풀어야된다는건데.. sorting 부분을 counting sort 로 바꾸면 되지 않을까
 
 
 
