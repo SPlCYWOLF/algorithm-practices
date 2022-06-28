@@ -1,13 +1,58 @@
 import sys
 sys.stdin = open('input.txt')
 
-N = int(input())
-nums = list(map(int, input().split()))                  # O(N)
-s_no_overlap_nums = sorted(set(nums))                   # O(NlogN) + O(N) = O(NlogN)
 
+def countingSort(array):
+    L = len(array)
+    occurances_cnt = [0] * (max(array)+100000)
+
+    # count the occurances of each element in the arrary
+    for i in range(L):
+        occurances_cnt[array[i]] += 1
+
+    # adding each element to the right of it accumulatively
+    for i in range(1, len(occurances_cnt)):
+        occurances_cnt[i] += occurances_cnt[i-1]
+
+    # shifting the whole arrary to right side one index
+    for i in range(len(occurances_cnt)-1, 0, -1):
+        occurances_cnt[i] = occurances_cnt[i-1]
+    occurances_cnt[0] = 0
+
+    # check for the distorting index number for each element in the original array
+    # and record the starting index on a new array
+    output = [0] * len(array)
+    for i in range(len(array)):
+        output[occurances_cnt[array[i]]] = array[i]
+        occurances_cnt[array[i]] += 1
+
+    return output
+
+N = int(input())
+nums = list(map(int, input().split()))          # O(N)
+
+min_num = min(nums)
+if min_num < 0:
+    for i in range(N):
+        nums[i] += abs(min_num)
+
+s_array = countingSort(nums)                    # 인풋 리스트 정렬
+temp = [i for n, i in enumerate(s_array) if i not in s_array[:n]]   # 정렬 리스트 중복제거
+print(nums)
+print(temp)
 
 for i in range(N):                                      # O(N)
-    print(s_no_overlap_nums.index(nums[i]), end=" ")    # O(1) + O(1)
+    print(temp.index(nums[i]), end=" ")    # O(1) + O(1)
+# total = O(N+k)
+
+
+# N = int(input())
+# nums = list(map(int, input().split()))                  # O(N)
+# s_no_overlap_nums = sorted(set(nums))                   # O(NlogN) + O(N) = O(NlogN)
+#
+#
+# for i in range(N):                                      # O(N)
+#     print(s_no_overlap_nums.index(nums[i]), end=" ")    # O(1) + O(1)
 # total = O(NlogN)
 # 이것도 통과 안되는걸 보면 O(N) 으로 풀어야된다는건데.. sorting 부분을 counting sort 로 바꾸면 되지 않을까
 
