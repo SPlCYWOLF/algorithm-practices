@@ -1,11 +1,9 @@
 import sys
-import pprint
 sys.stdin = open('input.txt')
 
 # 원소를 비교.
 # 동일하지 않다면, 4개로 자르고 하나씩 원소를 비교
 # 무한 반복
-#
 
 def dfs(n, r, c):
     global b_cnt, w_cnt
@@ -28,10 +26,8 @@ def dfs(n, r, c):
 N = int(input())
 paper = [tuple(map(int, input().split())) for _ in range(N)]
 b_cnt, w_cnt = 0, 0
-pp = pprint.PrettyPrinter()
-pp.pprint(paper)
 
-dfs(N, 0, 0)   # 종이의 총 길이, 잘린 횟수, 위치 r & c
+dfs(N, 0, 0)   # 종이의 총 길이, 위치 r & c
 
 print(w_cnt)
 print(b_cnt)
