@@ -1,6 +1,52 @@
 import sys
 sys.stdin = open('input.txt')
 
+#     우 좌 상 하
+dr = (0, 0, -1, 1)
+dc = (1, -1, 0, 0)
+
+def on_white(nr, nc, r, c, num):
+    if mals[nr][nc][0]:
+        mals[nr][nc] += mals[r][c]
+    else:
+        mals[nr][nc] = mals[r][c]
+        mals[r][c] = 0
+        temp[num][3] = 'on'
+def on_red(nr, nc, r, c, num):
+    pass
+def on_blue(nr, nc, r, c, num):
+    pass
+
+N, K = map(int, input().split())
+board = [tuple(map(int, input().split())) for _ in range(N)]
+temp = [list(map(int, input().split()))+['go'] for _ in range(K)]
+mals = [[0]*N for _ in range(N)]
+print(mals)
+for i in range(1, K+1):
+    r, c, direction, status = temp[i-1]
+    mals[r-1][c-1] = [i]
+print(mals)
+
+cnt = 1
+loop = 0
+
+while loop < 1000:
+    for i in range(K):
+        if temp[i][3] == 'go':
+            nr, nc = temp[i][0] + dr[2], temp[i][1] + dc[2]
+            if board[nr][nc] == 0:
+                on_white(nr, nc, temp[i][0], temp[i][1], i)
+            if board[nr][nc] == 1:
+                on_red(nr, nc, temp[i][0], temp[i][1], i)
+            if board[nr][nc] == 2:
+                on_blue(nr, nc, temp[i][0], temp[i][1], i)
+    loop += 1
+
+if loop == 1000:
+    print(-1)
+else:
+    print(loop)
+
 
 # 순서대로 말을 움직임
 # 말의 위치가 겹쳐지면 말을 비활성화

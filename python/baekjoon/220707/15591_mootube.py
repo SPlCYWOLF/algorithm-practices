@@ -13,12 +13,10 @@ def bfs(K, current_n):
     while Q:
         current_n, temp_relevance = Q.popleft()
         for goal_n, relevance in graph[current_n]:
-            if not visited[goal_n]:
+            if relevance >= K and not visited[goal_n]:
                 visited[goal_n] = 1
-                m_relevance = min(temp_relevance, relevance)
-                if m_relevance >= K:
-                    cnt += 1
-                Q.append((goal_n, m_relevance))
+                cnt += 1
+                Q.append((goal_n, relevance))
     return cnt
 
 

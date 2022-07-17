@@ -8,10 +8,10 @@ from itertools import combinations
 N, C = map(int, input().split())
 input_nodes = [list(map(int, input().split())) for _ in range(N)]
 ans = 0
-print(input_nodes)
+# print(input_nodes)
 
 comb = list(combinations(input_nodes, 2))
-print(comb)
+# print(comb)
 
 nodes = dict()
 for coordinates in comb:
@@ -21,7 +21,7 @@ for coordinates in comb:
     temp_x, temp_y = [str(x) for x in x], [str(y) for y in y]
     node_key = (''.join(temp_x), ''.join(temp_y))
     nodes[node_key] = distance
-print(nodes)
+# print(nodes)
 distances = sorted(nodes.values())
 
 visited = []
@@ -33,6 +33,6 @@ for dist in distances:
             visited += [(dist_node)]
             ans += dist
 
-print(visited)
+# print(visited)
 
 print(ans)
