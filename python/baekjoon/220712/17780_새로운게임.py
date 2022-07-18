@@ -1,6 +1,9 @@
 import sys
 sys.stdin = open('input.txt')
 
+# 소요시간 20시간
+# 정보 관리 힌트; -> https://heo-it-til.tistory.com/23
+
 #     우 좌 상 하
 dr = (0, 0, 0, -1, 1)
 dc = (0, 1, -1, 0, 0)
@@ -25,32 +28,26 @@ print(cur)
 turn, go = 1, True
 while go and turn < 1000:
     for i in range(1, K+1):             # 모든 말을 돌며
-        r, c, d = mals[i]               # 현재 말 정보 가져오고
+        r, c, d = mals[i]                   # 현재 말 정보 가져오고
 
-        if len(cur[r][c]) and cur[r][c][0] == i:# 현재 말의 위치가 맨 아래 말이라면(움직일 수 있다면)
+        if cur[r][c][0] == i:               # 현재 말의 위치가 맨 아래 말이라면(움직일 수 있다면)
             nr, nc = r + dr[d], c + dc[d]           # 움직일 위치 가져오고
 
             if board[nr][nc] == 2:                  # 움직일 위치가 파란색이면
-                nd = opposite[d]                        # 새로운 방향 가져오고
-                onr, onc = r + dr[nd], c + dc[nd]       # 새로운 방향으로 움직일 위치 가져오고
+                nd = opposite[d]                        # 반대 방향 가져오고
+                nr, nc = r + dr[nd], c + dc[nd]         # 반대 방향으로 움직일 위치 가져오고
 
-                if board[onr][onc] == 2:                # 반대쪽도 파란색이면
-                    mals[i] = [r, c, nd]                     # 말 정보에 새로운 방향만 저장, *위치는 바뀌지 않기 때문에 말 위치 최신화 x
-
-                else:                                   # 아니라면
-                    mals[i] = [onr, onc, nd]                 # 말 정보에 새로운 위치와 새로운 방향 저장
-                    cur[onr][onc] += cur[r][c]               # 말 위치 최신화
+                if board[nr][nc] == 2:                  # 반대쪽도 파란색이면
+                    mals[i] = [r, c, nd]                   # 말 정보에 새로운 방향만 저장, *위치는 바뀌지 않기 때문에 말 위치 최신화 x
+                    nr, nc = r, c
+                elif board[nr][nc] == 1:                # 반대쪽이 빨간색이면
+                    mals[i] = [nr, nc, nd]                 # 말 정보에 새로운 위치와 새로운 방향 저장
+                    cur[nr][nc] += cur[r][c][::-1]         # 말 위치 거꾸로 하고 최신화
                     cur[r][c] = []
-                    if len(cur[onr][onc]) >= 4:              # 현재 말 위치에 4개 이상 말이 쌓여있다면
-                        print(turn)                                 # 종료된 턴 반환
-                        go = False                                  # 종료 신호
-                        break
-
-                # for j in range(1, K + 1):  # 겹쳐진 말이 있으면 위치를 맨 아래 말과 동기화
-                #     if mals[j][0] == r and mals[j][1] == c:
-                #         mals[j] = [onr, onc, mals[j][2]]
-
-                continue
+                elif board[nr][nc] == 0:                # 반대쪽이 하얀색이면
+                    mals[i] = [nr, nc, nd]                 # 말 정보에 새로운 위치와 새로운 방향 저장
+                    cur[nr][nc] += cur[r][c]               # 말 위치 최신화
+                    cur[r][c] = []
 
             elif board[nr][nc] == 1:        # 움직일 위치가 빨간색이면
                 mals[i] = [nr, nc, d]               # 말 정보에 새로운 위치 저장
@@ -73,9 +70,8 @@ while go and turn < 1000:
 
     turn += 1           # 턴 종료시 +1
 
-if go and turn == 1000:        # 1000번 이상 턴 소요시
-    print(-1)               # -1 반환
-
+if go and turn == 1000:     # 1000번 이상 턴 소요시
+    print(-1)                       # -1 반환
 
 
 
