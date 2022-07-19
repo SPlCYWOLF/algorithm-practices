@@ -83,7 +83,7 @@ for i in nums:                                          # 기록한 정렬된 �
 # s_no_overlap_nums = sorted(no_overlap_nums)             # 퀵 정열과 동작 방식이 비슷한 병합 정렬을 기반으로 만들어짐
 #                                                         # 퀵정렬보다 느리지만 최악의 경우에도 시간복잡도 O(NlogN)을 보장
 # for i in range(N):
-#     print(s_no_overlap_nums.index(nums[i]), end=" ")      # O(1) * N 시간 복잡도
+#     print(s_no_overlap_nums.index(nums[i]), end=" ")      # O(N) * N 시간 복잡도
 
 
 
