@@ -1,51 +1,73 @@
-import sys
-import heapq
+import sys, heapq
+sys.stdin = open('input.txt')
 
-n, base_cost = map(int, sys.stdin.readline().rstrip().split())
-nodes = []
-for _ in range(n):
-    nodes.append(list(map(int, sys.stdin.readline().rstrip().split())))
+N, C = map(int, sys.stdin.readline().rstrip().split())
 
-parents = [i for i in range(n)]
-pq = []
+# 시간초과
+# 크루스칼 알고리즘 활용하여 MST 찾기
+# distance값을 오름차순으로 정리 필요
+# heapq 활용하여 정렬
+# 완성된 heapq를 가지고 연결 가능한 간선값을 축적
+# cycle이 형성 안되는것을 확인하기 위해 union-find 알고리즘을 활용
+# MST의 간선의 갯수는 N-1 임으로,
+# 간선의 갯수가 충족되면 distance의 총 합을, 반대의 경우는 -1을 반환
 
-for i in range(n):
-    for j in range(i+1, n):
-        a, b = nodes[i]
-        c, d = nodes[j]
-        cost = abs(a-c)**2 + abs(b-d)**2
-        if cost >= base_cost:
-            heapq.heappush(pq, [cost, i, j])
+def find(n):
+    global root_table
 
-def find(node):
-    if parents[node] == node:
-        return node
+    if root_table[n] < 0:
+        return n
     else:
-        parents[node] = find(parents[node])
-        return parents[node]
-def union(node1, node2):
-    root1, root2 = find(node1), find(node2)
-    if root1 == root2:
+        root_table[n] = find(root_table[n])
+        return root_table[n]
+
+def union(n1, n2):
+    global root_table
+
+    p_n1, p_n2 = find(n1), find(n2)
+    if p_n1 == p_n2:
         return False
     else:
-        parents[root2] = root1
+        root_table[p_n2] = p_n1
         return True
 
-total = 0
-edge_num = 0
-while pq:
-    cur_cost, node1, node2 = heapq.heappop(pq)
+temp = [0] * N
+for i in range(N):
+    temp[i] = list(map(int, sys.stdin.readline().rstrip().split())) + [i+1]
 
-    if union(node1, node2):
-        total += cur_cost
-        edge_num += 1
-        if edge_num == n-1:
-            break
+Q = []
+for i in range(N):
+    x1, y1, node1 = temp[i]
+    for j in range(i+1, N):
+        x2, y2, node2 = temp[j]
+        d = abs(x1-x2)**2 + abs(y1-y2)**2
+        if d >= C:
+            heapq.heappush(Q, (d, node1, node2))
 
-if edge_num == n-1:
-    print(total)
-else:
+if len(Q) < (N-1):
     print(-1)
+else:
+    root_table = [-1] * (N+1)
+    total_cost, road_cnt = 0, 0
+
+    while Q:
+        d, n1, n2 = heapq.heappop(Q)
+        if union(n1, n2):
+            total_cost += d
+            road_cnt += 1
+        else:
+            if road_cnt + len(Q) < N-1:
+                break
+
+    if road_cnt == (N-1):
+        print(total_cost)
+    else:
+        print(-1)
+
+
+
+
+
 
 
 
