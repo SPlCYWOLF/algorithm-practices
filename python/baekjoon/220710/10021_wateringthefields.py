@@ -57,12 +57,12 @@ else:
             road_cnt += 1
         else:
             if road_cnt + len(Q) < N-1:
+                print(-1)
                 break
 
-    if road_cnt == (N-1):
-        print(total_cost)
-    else:
-        print(-1)
+        if road_cnt == (N-1):       # 이걸 추가해서 통과
+            print(total_cost)
+            break
 
 
 
