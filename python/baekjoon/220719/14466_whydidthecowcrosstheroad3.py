@@ -19,36 +19,37 @@ cows = []
 for i in range(K):
     cows.append(tuple(map(int, input().split())))
 
-distant = set()
 visited = []
+distant = set()
 for i in range(K):
     r, c = cows[i]
     Q = deque()
     temp = cows[::]
     temp.remove((r, c))
+    print(f'starting cow: {r, c}')
     if (r, c) not in visited:
         Q.append((r, c))
 
         while Q:
             r, c = Q.popleft()
 
-            if (r, c) not in visited:
-                visited.append((r, c))
-                for j in range(4):
-                    nr, nc = r + dr[j], c + dc[j]
-                    if 0 < nr <= N and 0 < nc <= N:
-                        if (r, c, nr, nc) not in fence and (nr, nc, r, c) not in fence:
-                            if (nr, nc) in temp:
-                                temp.remove((nr, nc))
-                            if (nr, nc) not in visited:
-                                Q.append((nr, nc))
-                # bfs 제대로 안돌아가는거 수정필요
-        print(temp)
+            for j in range(4):
+                nr, nc = r + dr[j], c + dc[j]
+
+                if 0 < nr <= N and 0 < nc <= N and (nr, nc) not in visited:
+                    if (r, c, nr, nc) not in fence and (nr, nc, r, c) not in fence:
+                        visited.append((nr, nc))
+                        print(f'visits : {(nr, nc)} / currently not accessed cows : {temp}')
+                        if (nr, nc) in temp:
+                            temp.remove((nr, nc))
+                        Q.append((nr, nc))
+
+        print(f'not accessible cows : {temp}')
         for distant_cow in temp:
             x, y = distant_cow
             distant.update([(x, y, cows[i][0], cows[i][1]), (cows[i][0], cows[i][1], x, y)])
-
-
+        print(f'distant cows : {distant}')
+        print()
 print(len(distant) // 2)
 # t = set()
 # t.update([(1, 2)])
