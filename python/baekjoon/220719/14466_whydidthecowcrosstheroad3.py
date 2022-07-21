@@ -15,11 +15,17 @@ fence = []
 for i in range(R):
     fence.append(tuple(map(int, input().split())))
 
-distant = 0
+cows = []
+for i in range(K):
+    cows.append(tuple(map(int, input().split())))
+
+distant = set()
 visited = []
 for i in range(K):
-    r, c = map(int, input().split())
+    r, c = cows[i]
     Q = deque()
+    temp = cows[::]
+    temp.remove((r, c))
     if (r, c) not in visited:
         Q.append((r, c))
 
@@ -32,10 +38,18 @@ for i in range(K):
                     nr, nc = r + dr[j], c + dc[j]
                     if 0 < nr <= N and 0 < nc <= N:
                         if (r, c, nr, nc) not in fence and (nr, nc, r, c) not in fence:
-                            Q.append((nr, nc))
-        distant += 1
+                            if (nr, nc) in temp:
+                                temp.remove((nr, nc))
+                            if (nr, nc) not in visited:
+                                Q.append((nr, nc))
+                # bfs 제대로 안돌아가는거 수정필요
+        print(temp)
+        for distant_cow in temp:
+            x, y = distant_cow
+            distant.update([(x, y, cows[i][0], cows[i][1]), (cows[i][0], cows[i][1], x, y)])
 
-print(distant)
-t = set()
-t.update([(1, 2)])
-print(t)
+
+print(len(distant) // 2)
+# t = set()
+# t.update([(1, 2)])
+# print(t)

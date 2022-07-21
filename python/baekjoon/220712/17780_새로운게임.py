@@ -20,8 +20,8 @@ cur = [[[] for j in range(N + 1)] for i in range(N + 1)]    # 돌의 위치 및 
 mals = [[0]]                                                # 돌의 정보
 for i in range(1, K+1):
     r, c, d = map(int, input().split())
-    mals.append([r, c, d])
-    cur[r][c].append(i)
+    mals.append([r, c, d])      # 돌 정보 입력
+    cur[r][c].append(i)         # 해당 위치의 돌 번호 입력
 
 print(cur)
 
