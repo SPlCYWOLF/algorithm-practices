@@ -2,6 +2,28 @@ from collections import deque
 import sys
 sys.stdin = open('input.txt')
 
+# 완전탐색으로 가보자
+# 언덕 높이는 최대 100 까지.
+# 0-17, 1-18, 2-19 이런 식으로 83번 loop 돌면서
+# 모든 리스트를 해당 범위에 맞추면서 발생한 cost의 minimum 값을 정답으로 반환
+
+N = int(input())
+hills = tuple(int(input()) for _ in range(N))
+min_cost = 9999999999
+
+for i in range(84):
+    min_h, max_h = i, i+17
+    cost = 0
+    for hill in hills:
+        if hill < min_h:
+            cost += (min_h - hill) ** 2
+        if hill > max_h:
+            cost += (hill - max_h) ** 2
+    min_cost = min(min_cost, cost)
+
+print(min_cost)
+
+
 
 # 패작 3
 # 가운데부터 비교하며 높이를 반반 나눠서 높이를 줄여가는 풀이 실패
