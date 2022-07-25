@@ -2,16 +2,61 @@
 # 1개 이상 만났으면 ans += ( (전체 소) - (자신 + 만난 소) = cnt * (전체 소 - cnt) )
 # 1개도 안 만났으면 single += 1    이후 bfs 다 끝나면   ans += (single 개수만큼 모드 연결 되는 노드 개수)
 
+from collections import deque
 import sys
 sys.stdin = open('input.txt')
+
+
+def bfs(r, c, met):
+    global single, counted
+    Q = deque()
+    Q.append((r, c))
+
+    while Q:
+        r, c = Q.popleft()
+        for i in range(4):
+            nr, nc = r + dr[i], c + dc[i]
+            if not visited[nr][nc] and (r, c, nr, nc) not in fence and (nr, nc, r, c) not in fence:
+                visited[nr][nc] = 1
+                Q.append((nr, nc))
+                if (nr, nc) in cows:
+                    met += 1
+    if met > 1:
+        count = met * (K - met - counted)
+        counted += met
+        return count
+    else:
+        single += 1
+        return 0
+
 
 #     상 우 하 좌
 dr = (-1, 0, 1, 0)
 dc = (0, 1, 0, -1)
 
 N, K, R = map(int, input().split())
+fence = tuple(tuple(map(int, input().split())) for _ in range(R))
+visited = [[1] * (N+2)] + [[1] + [0] * N + [1] for _ in range(N)] + [[1] * (N+2)]
+print(fence)
+print(visited)
+cows = tuple(tuple(map(int, input().split())) for _ in range(K))
 
+ans = 0
+single = 0
+counted = 0
+for i in range(K):
+    r, c = cows[i]
+    met = 1
+    if not visited[r][c]:
+        visited[r][c] = 1
+        ans += bfs(r, c, met)
 
+j, comb = 1, 0
+while single > j:
+    comb = j + comb
+    j += 1
+
+print(ans + comb)
 
 
 

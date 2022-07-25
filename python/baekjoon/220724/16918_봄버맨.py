@@ -126,4 +126,3 @@ elif N % 4 == 3:
 #                         good += 1
 #
 #                 if good == 4:
-
