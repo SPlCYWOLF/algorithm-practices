@@ -7,15 +7,7 @@ sys.stdin = open('input.txt')
 dr = (0, 1, 0, -1)
 dc = (1, 0, -1, 0)
 
-# 처음 진입 확인용
-#     우  좌  상
-idr = (0, 0, -1)
-idc = (1, -1, 0)
 
-def take_second(elem):
-    return elem[1]
-def take_first(elem):
-    return elem[0]
 def toStr(n):
     if n == 0:
         return '.'
@@ -29,7 +21,7 @@ def toNum(n):
 
 def bfs(r, c):
     visited = [[0] * (C+2) for _ in range(R+2)]
-    chunks = []
+    chunks = []                                 # 미네랄 뭉치 저장 리스트
     Q = deque()
     Q.append((r, c))
 
@@ -38,38 +30,33 @@ def bfs(r, c):
 
         for k in range(4):
             nr, nc = r + dr[k], c + dc[k]
-            if nr == R:                         # 공중에 떠있지 않은 미네랄
-                return 0
+            if nr == R+1:                       # 바닥에 연결되어있다 = 공중에 떠있지 않은 미네랄
+                return 0                        # 고로 bfs 종료
 
             if cave[nr][nc] == 1 and not visited[nr][nc]:
                 visited[nr][nc] = 1
                 chunks.append((nr, nc))
                 Q.append((nr, nc))
 
-    chunks = sorted(chunks, key=take_first, reverse=True)
-    chunks = sorted(chunks, key=take_second, reverse=True)
-    n = len(chunks)
-    min_h_list = []
-    temp = 0
-    for i in range(n):          # col 별로 최소 높이 저장
-        r, c = chunks[i]
-        if c != temp:
-            temp = c
-            min_h_list.append((r, c))
-
     drop = 9999999999
-    for min_h in min_h_list:    # 모든 col의 최소 값 중 다음 미네랄까지의 최소 높이 저장
-        r, c = min_h
+    for chunk in chunks:        # 떨어질 최소 높이 구하기
+        r, c = chunk
         d = 0
-        while cave[r+1][c] == 0:
+        if cave[r+1][c] == 1:
+            continue
+        while d < drop and cave[r+1][c] != 2:
+            if cave[r+1][c] == 1 and (r+1, c) not in chunks:
+                break
             r += 1
             d += 1
-        drop = min(drop, d)
+        drop = d
 
     for chunk in chunks:        # 떨어진 미네랄 위치 반영
         r, c = chunk
         cave[r][c] = 0
-        cave[r+drop][c] = 1
+    for chunk in chunks:        # 중복 최신화 방지 위해 이전 위치 삭제 후 새로운 위치 입력
+        r, c = chunk
+        cave[r + drop][c] = 1
 
 
 R, C = map(int, input().split())
@@ -78,32 +65,29 @@ throws = int(input())
 throw_h = list(map(int, input().split()))
 for i in range(1, R+1):
     print(*cave[i][1:C+1])
-for i in range(R+2):
-    print(*cave[i])
+
 
 for i in range(throws):
-    r = R - throw_h[i] + 1
-    if i % 2:
-        # print(f'to left: {throw_h[i]}')
+    r = R - throw_h[i] + 1      # 동굴 설정에 맞춰서 상하 반전
+    if i % 2:                   # 우측에서 좌측으로 막대기 이동
         for j in range(C, 0, -1):
-            if cave[r][j]:     # 미네랄이 있고, 좌 or 우 or 위에 미네랄이 있으면 bfs 시작
-                cave[r][j] = 0
-                for k in range(3):
-                    nr, nc = r + idr[k], j + idc[k]
+            if cave[r][j] == 1:         # 미네랄이 있으면
+                cave[r][j] = 0          # 부시고
+                for k in range(4):      # 4방향 붙어있던 미네랄 유무 확인
+                    nr, nc = r + dr[k], j + dc[k]
                     if cave[nr][nc] == 1:
                         bfs(nr, nc)
-                break
+                break               # 한번 던진 막대기가 미네랄에 막히면 스톱
 
-    else:
-        # print(f'to right: {throw_h[i]}')
+    else:                       # 좌측에서 우측으로 막대기 이동
         for j in range(1, C+1):
-            if cave[r][j]:     # 미네랄이 있고, 좌 or 우 or 위에 미네랄이 있으면 bfs 시작
-                cave[r][j] = 0
-                for k in range(3):
-                    nr, nc = r + idr[k], j + idc[k]
+            if cave[r][j] == 1:         # 미네랄이 있으면
+                cave[r][j] = 0          # 부시고
+                for k in range(4):      # 4방향 붙어있던 미네랄 유무 확인
+                    nr, nc = r + dr[k], j + dc[k]
                     if cave[nr][nc] == 1:
                         bfs(nr, nc)
-                break
+                break               # 한번 던진 막대기가 미네랄에 맞았으니 스톱
 
 print()
 for i in range(1, R+1):
