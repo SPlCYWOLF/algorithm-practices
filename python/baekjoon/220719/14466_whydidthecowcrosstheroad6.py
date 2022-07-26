@@ -8,7 +8,7 @@ sys.stdin = open('input.txt')
 
 
 def bfs(r, c, met):
-    global single, counted
+    global counted
     Q = deque()
     Q.append((r, c))
 
@@ -21,14 +21,10 @@ def bfs(r, c, met):
                 Q.append((nr, nc))
                 if (nr, nc) in cows:
                     met += 1
-    if met > 1:
-        count = met * (K - met - counted)
-        counted += met
-        return count
-    else:
-        single += 1
-        return 0
 
+    count = met * (K - met - counted)
+    counted += met
+    return count
 
 #     상 우 하 좌
 dr = (-1, 0, 1, 0)
@@ -37,12 +33,9 @@ dc = (0, 1, 0, -1)
 N, K, R = map(int, input().split())
 fence = tuple(tuple(map(int, input().split())) for _ in range(R))
 visited = [[1] * (N+2)] + [[1] + [0] * N + [1] for _ in range(N)] + [[1] * (N+2)]
-print(fence)
-print(visited)
 cows = tuple(tuple(map(int, input().split())) for _ in range(K))
 
 ans = 0
-single = 0
 counted = 0
 for i in range(K):
     r, c = cows[i]
@@ -51,75 +44,62 @@ for i in range(K):
         visited[r][c] = 1
         ans += bfs(r, c, met)
 
-j, comb = 1, 0
-while single > j:
-    comb = j + comb
-    j += 1
-
-print(ans + comb)
+print(ans)
 
 
 
 
 
-# bfs 돌면서 조건에 부합한 경우에만 다음 경로로 이동 (노벽, 노울타리, 가본곳)
-# 이동 해보고
-# 참고 풀이
-# import sys
-# from collections import deque
-# sys.stdin = open('input.txt')
+# def bfs(r, c, met):
+#     global single, counted
+#     Q = deque()
+#     Q.append((r, c))
+#
+#     while Q:
+#         r, c = Q.popleft()
+#         for i in range(4):
+#             nr, nc = r + dr[i], c + dc[i]
+#             if not visited[nr][nc] and (r, c, nr, nc) not in fence and (nr, nc, r, c) not in fence:
+#                 visited[nr][nc] = 1
+#                 Q.append((nr, nc))
+#                 if (nr, nc) in cows:
+#                     met += 1
+#     if met > 1:
+#         count = met * (K - met - counted)
+#         counted += met
+#         return count
+#     else:
+#         single += 1
+#         return 0
 #
 #
-# dx = [0, 0, 1, -1]
-# dy = [1, -1, 0, 0]
+# #     상 우 하 좌
+# dr = (-1, 0, 1, 0)
+# dc = (0, 1, 0, -1)
 #
-# def bfs(r1, c1):
-#     dq = deque()
-#     dq.append((r1, c1))
-#     cow_visit[r1][c1] = True
-#     while dq:
-#         x, y = dq.popleft()
-#         for d in range(4):
-#             nx = dx[d] + x
-#             ny = dy[d] + y
-#             # 범위 체크
-#             if nx < 0 or ny < 0 or nx >= n or ny >= n:
-#                 continue
-#             if cow_visit[nx][ny]:  # 방문 체크
-#                 continue
-#             if (nx, ny) in road[x][y]:  # 다리인 경우 pass
-#                 continue
-#             dq.append((nx, ny))
-#             cow_visit[nx][ny] = True
+# N, K, R = map(int, input().split())
+# fence = tuple(tuple(map(int, input().split())) for _ in range(R))
+# visited = [[1] * (N+2)] + [[1] + [0] * N + [1] for _ in range(N)] + [[1] * (N+2)]
+# print(fence)
+# print(visited)
+# cows = tuple(tuple(map(int, input().split())) for _ in range(K))
 #
-# n, k, r = map(int, input().split())  # n*n, k: 마리, r: 정해진 길
+# ans = 0
+# single = 0
+# counted = 0
+# for i in range(K):
+#     r, c = cows[i]
+#     met = 1
+#     if not visited[r][c]:
+#         visited[r][c] = 1
+#         ans += bfs(r, c, met)
 #
-# road = [[[] for _ in range(n)] for _ in range(n)]
-# cow_visit = [[False] * n for _ in range(n)]
-# count = 0
-# # 길 위치 담기
-# for _ in range(r):
-#     r1, c1, r2, c2 = map(int, input().split())
-#     road[r1 - 1][c1 - 1].append((r2 - 1, c2 - 1))
-#     road[r2 - 1][c2 - 1].append((r1 - 1, c1 - 1))
+# j, comb = 1, 0
+# while single > j:
+#     comb = j + comb
+#     j += 1
 #
-# # 소의 위치 담기
-# cow_list = list()
-# for _ in range(k):
-#     a, b = map(int, input().split())
-#     cow_list.append((a - 1, b - 1))
-#
-# # 1. 소를 한마리씩 돌려가면서 방문 여부 탐색
-# for i, cow in enumerate(cow_list):
-#     cow_visit = [[False] * n for _ in range(n)]
-#     # 2. 현재 소가 정해진 길 없이 가는 경로를 탐색
-#     bfs(cow[0], cow[1])
-#     for r2, c2 in cow_list[i + 1:]:
-#         # 3. 방문을 완료하지 못한 경우 결과 + 1
-#         if not cow_visit[r2][c2]:
-#             count += 1
-# print(count)
-
+# print(ans + comb)
 
 
 
