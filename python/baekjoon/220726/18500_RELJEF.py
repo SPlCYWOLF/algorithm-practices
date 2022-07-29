@@ -63,8 +63,8 @@ R, C = map(int, input().split())
 cave = [[2]*(C+2)] + [[2] + list(map(toNum, input())) + [2] for _ in range(R)] + [[2]*(C+2)]
 throws = int(input())
 throw_h = list(map(int, input().split()))
-for i in range(1, R+1):
-    print(*cave[i][1:C+1])
+# for i in range(1, R+1):
+#     print(*cave[i][1:C+1])
 
 
 for i in range(throws):
