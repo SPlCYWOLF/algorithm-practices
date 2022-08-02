@@ -21,20 +21,22 @@ def bfs(m):
         r, c = Q.popleft()
         for k in range(4):
             nr, nc = r + dr[k], c + dc[k]
-            if elevations[nr][nc] <= m and not visited[nr][nc]:
+            difference = abs(elevations[r][c] - elevations[nr][nc])
+            if difference <= m and not visited[nr][nc]:
                 Q.append((nr, nc))
                 visited[nr][nc] = 1
 
     for wp in waypoints:
         wr, wc = wp
-        if not visited[wr][wc]:
+        if not visited[wr+1][wc+1]:
             return False
 
     return True
 
+
 M, N = map(int, input().split())
 elevations = [[9999999999]*(N+2)] + [[9999999999] + list(map(int, input().split())) + [9999999999] for _ in range(M)] + [[9999999999]*(N+2)]
-print(elevations)
+
 waypoints = []
 temp = [list(map(int, input().split())) for _ in range(M)]
 for i in range(M):          # waypoints 위치 값 저장
@@ -42,10 +44,10 @@ for i in range(M):          # waypoints 위치 값 저장
         if temp[i][j]:
             waypoints.append((i, j))
 highest = 0
-for i in range(1, M-1):
-    for h in elevations[i][1:N-1]:
+for i in range(1, M):
+    for h in elevations[i][1:N]:
         highest = max(highest, h)
-print(highest)
+
 D = 0
 
 l, r = 0, highest
