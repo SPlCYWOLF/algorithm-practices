@@ -2,37 +2,88 @@ import sys
 sys.stdin = open('input.txt')
 from itertools import combinations, product, permutations
 
-# 피자1과 피자2의 7보다 작은 경우의 수를 리스트에 다 저장하고
-# 해당 리스트에서.. 아하..씨 정말 모르겠다..
+# sum()함수 없이 패작4 방식을 활용해보자
+# 아 모르겠다 포기선언
 demand = int(input())
 m, n = map(int, input().split())
 pm = [int(input()) for _ in range(m)] * 2
 pn = [int(input()) for _ in range(n)] * 2
 ans = 0
 
-chances = [0] * (demand+1)      # 인덱스 == 피자크기의 합
+chances1, chances2 = [[] for _ in range(m)], [[] for _ in range(n)]
 for i in range(m):
+    if pm[i] == demand:
+        ans += 1
+        continue
+    if pm[i] > demand:
+        continue
+
     for j in range(i+1, i+m):
-        S = sum(pm[i:j])
-        if S == demand:
-            ans += 1
-            continue
-        if S < demand:
-            chances[S] += 1
+        chances1[i].append(pm[i:j])
 
 for i in range(n):
-    for j in range(n+1, n+i):
-        S = sum(pn[i:j])
-        if S == demand:
-            ans += 1
-            continue
-        if S < demand:
-            chances[S] += 1
+    if pn[i] == demand:
+        ans += 1
+        continue
+    if pn[i] > demand:
+        continue
+
+    for j in range(i+1, i+n):
+        chances2[i].append(pn[i:j])
 
 
 
-print(chances)
+# for i in range(len(chances1)):
+#     if chances1[i] == 0:
+#         continue
+#     if i + chances2[demand-i]:
+#         ans += chances1[i] * chances2[demand-i]
+
+print(chances1)
+print(chances2)
 print(ans)
+
+
+
+
+
+# 패작5 : 피자1과 피자2의 7보다 작은 경우의 수를 리스트에 다 저장하고 합해주는 접근 방식은
+# sum() 함수를 활용하는데, 이건 O(n) 시간복잡도여서 결국 전체적으로 O(n^3)가 되어버려
+# 시간초과로 실패한듯하다.
+# demand = int(input())
+# m, n = map(int, input().split())
+# pm = [int(input()) for _ in range(m)] * 2
+# pn = [int(input()) for _ in range(n)] * 2
+# ans = 0
+#
+# chances1, chances2 = [0] * (demand+1), [0] * (demand+1)      # 인덱스 == 피자크기의 합
+# for i in range(m):
+#     for j in range(i+1, i+m):
+#         S = sum(pm[i:j])
+#         if S == demand:
+#             ans += 1
+#             continue
+#         if S < demand:
+#             chances1[S] += 1
+#
+# for i in range(n):
+#     for j in range(i+1, i+n):
+#         S = sum(pn[i:j])
+#         if S == demand:
+#             ans += 1
+#             continue
+#         if S < demand:
+#             chances2[S] += 1
+#
+# for i in range(len(chances1)):
+#     if chances1[i] == 0:
+#         continue
+#     if i + chances2[demand-i]:
+#         ans += chances1[i] * chances2[demand-i]
+#
+# print(chances1)
+# print(chances2)
+# print(ans)
 
 
 
