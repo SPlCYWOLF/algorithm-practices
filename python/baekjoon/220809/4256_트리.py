@@ -10,19 +10,20 @@ def findTree(n):
     visited[rn] = 1
 
     # 좌측 subtree
-    lrn = preorder[n+1]
-    if not visited[lrn] and lrn not in inorder[inorder.index(rn):]:
-        tree[rn][0] = lrn
-        visited[lrn] = 1
-        findTree(n + 1)
-    
+    if n + 1 > total_node:
+        lrn = preorder[n+1]
+        if not visited[lrn] and lrn not in inorder[inorder.index(rn):]:
+            tree[rn][0] = lrn
+            visited[lrn] = 1
+            findTree(n + 1)
+
     # 우측 subtree
     lTreeNodeCnt = len(inorder[:inorder.index(rn)])
-    if lTreeNodeCnt and lTreeNodeCnt+1 < total_node:
-        rrn = preorder[n + lTreeNodeCnt + 1]
+    if lTreeNodeCnt and lTreeNodeCnt+1+n < total_node:
+        rrn = preorder[n + lTreeNodeCnt + 1]         # 인덱스 에러 위치
         if not visited[rrn]:
-            if rn in inorder[:inorder.index(rootNode)]:    # left tree 를 확인중이면
-                if rrn in inorder[n:inorder.index(rootNode)]:   # 현재 노드의 우측 && 루트노드의 좌측 여부 확인
+            if rn in inorder[:inorder.index(rn)]:    # left tree 를 확인중이면  (수상)
+                if rrn in inorder[n:inorder.index(rn)]:   # 현재 노드의 우측 && 루트노드의 좌측 여부 확인   (수상)
                     tree[rn][1] = rrn
                     visited[rrn] = 1
                     findTree(n + lTreeNodeCnt + 1)

@@ -126,39 +126,39 @@ print(ans)
 
 
 # 패작3 : 메모리 초과
-# demand = int(input())
-# m, n = map(int, input().split())
-# pm = [int(input()) for _ in range(m)] * 2
-# pn = [int(input()) for _ in range(n)] * 2
-# ans = 0
-# pizza1, pizza2 = [], []
-# for i in range(m):
-#     for j in range(i+1, m+i):
-#         if sum(pm[i:j]) == demand:
-#             ans += 1
-#         elif sum(pm[i:j]) > demand:
-#             continue
-#         pizza1.append(pm[i:j])
-#
-# for i in range(n):
-#     for j in range(i+1, n+i):
-#         if sum(pn[i:j]) == demand:
-#             ans += 1
-#         elif sum(pn[i:j]) > demand:
-#             continue
-#         pizza2.append(pn[i:j])
-#
-# for p1 in pizza1:
-#     for p2 in pizza2:
-#         if sum(p1+p2) == demand:
-#             ans += 1
-#
-# if sum(pm[:m]+pn[:n]) == demand:
-#     ans += 1
-#
-# print(pizza1)
-# print(pizza2)
-# print(ans)
+demand = int(input())
+m, n = map(int, input().split())
+pm = [int(input()) for _ in range(m)] * 2
+pn = [int(input()) for _ in range(n)] * 2
+ans = 0
+pizza1, pizza2 = [], []
+for i in range(m):
+    for j in range(i+1, m+i):
+        if sum(pm[i:j]) == demand:
+            ans += 1
+        elif sum(pm[i:j]) > demand:
+            continue
+        pizza1.append(pm[i:j])
+
+for i in range(n):
+    for j in range(i+1, n+i):
+        if sum(pn[i:j]) == demand:
+            ans += 1
+        elif sum(pn[i:j]) > demand:
+            continue
+        pizza2.append(pn[i:j])
+
+for p1 in pizza1:
+    for p2 in pizza2:
+        if sum(p1+p2) == demand:
+            ans += 1
+
+if sum(pm[:m]+pn[:n]) == demand:
+    ans += 1
+
+print(pizza1)
+print(pizza2)
+print(ans)
 
 
 
