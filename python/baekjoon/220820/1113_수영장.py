@@ -49,6 +49,8 @@ def dfs(h, r, c):
 
 N, M = map(int, input().split())
 field = [tuple(seperate(input())) for _ in range(N)]
+print(field)
+
 highest = 0
 for i in range(N):
     highest = max(max(field[i]), highest)
@@ -73,7 +75,7 @@ for c in coordinates:
 
     if temp != h:
         temp = h
-        flood = [[0] * M for _ in range(N)]
+        flood = [[0] * M for _ in range(N)]     #
         counted = [[0] * M for _ in range(N)]
 
     if not flood[r][c] and not counted[r][c]:
