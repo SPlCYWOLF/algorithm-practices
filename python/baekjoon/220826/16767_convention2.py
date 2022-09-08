@@ -37,7 +37,7 @@ while Q or line:
         else:
             break
 
-    line = deque(sorted(line, key=lambda x: x[2]))  # 대기줄 나이순으로 정렬
+    line = deque(sorted(line, key=lambda x: x[2]))  # 대기줄 선임 순위로 정렬 1-> 2-> 3-> 4
 
 print(max_wait)
 
