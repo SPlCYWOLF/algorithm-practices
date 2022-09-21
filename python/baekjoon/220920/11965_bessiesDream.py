@@ -45,7 +45,7 @@ while Q:
                         found = True
                         break
 
-                Q.append((nr, nc, smells, cnt+1))
+                    Q.append((nr, nc, smells, cnt+1))
 
             elif field[nr][nc] == 4:
                 if nr == N and nc == M:
@@ -55,6 +55,7 @@ while Q:
 
                 moved = 1
                 while field[nr][nc] == 4:
+                    visited[nr][nc] = 1
                     nr, nc = nr + dr[k], nc + dc[k]
                     moved += 1
 
@@ -65,6 +66,11 @@ while Q:
                         break
 
                     Q.append((nr, nc, True, cnt+moved))
+
+                elif field[nr][nc] == 3:
+                    nr, nc = nr - dr[k], nc - dc[k]
+                    Q.append((nr, nc, False, cnt + moved - 1))
+
                 elif field[nr][nc] == 1:
                     if nr == N and nc == M:
                         ans = cnt + moved
@@ -81,11 +87,6 @@ while Q:
                     break
 
                 Q.append((nr, nc, smells, cnt+1))
-
-        print(f'count{cnt}')
-        for v in visited:
-            print(v)
-        print()
 
     if found:
         break

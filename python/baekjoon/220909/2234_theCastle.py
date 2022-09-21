@@ -1,5 +1,4 @@
 from collections import deque
-from itertools import combinations
 import sys
 sys.stdin = open('input.txt')
 
