@@ -21,3 +21,12 @@ def solution(n, computers):
     return ans
 
 print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
+
+
+def temp(n):
+    if n < 5:
+        temp(n+1)
+        # n = temp(n+1)
+    return n
+
+print(temp(1))
