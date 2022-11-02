@@ -45,10 +45,10 @@ def solution(m, musicinfos):
 
     # 샵 구분 지어 기억하는 멜로디 재구성
     m = melody_convert(m)
-
-    music_dict = dict()
-    music_order = deque()
-    for info in musicinfos:
+    music_details = []
+    # music_dict = dict()
+    # music_order = deque()
+    for i, info in enumerate(musicinfos):
         start, end, title, melody = info.split(",")
 
         # 라디오에서 재생 시간 계산
@@ -58,40 +58,48 @@ def solution(m, musicinfos):
         melody = melody_convert(melody)
 
         # 딕셔너리에 각 음악 정보 저장
-        music_dict[title] = {"time": time, "melody": melody}
-
+        # music_dict[title] = {"time": time, "melody": melody}
+        # music_dict[title] = [time, melody]
+        music_details.append([time, i, melody, title])
+        # print(music_dict)
+        # print(music_details)
         # 음악 순서 매기기
-        if music_order:
-            if time > music_dict[music_order[0]]["time"]:
-                music_order.appendleft(title)
-            elif time == music_dict[music_order[0]]["time"]:
-                music_order.insert(1, title)
-            else:
-                music_order.append(title)
-        else:
-            music_order.append(title)
+        # if music_order:
+        #     if time > music_dict[music_order[0]]["time"]:
+        #         music_order.appendleft(title)
+        #     elif time == music_dict[music_order[0]]["time"]:
+        #         music_order.insert(1, title)
+        #     else:
+        #         music_order.append(title)
+        # else:
+        #     music_order.append(title)
 
+    sorted_music = sorted(music_details, key=lambda x: (-x[0], x[1]))
+    # print(sorted_music)
 
     # 부분 문자열 비교 (찾는 즉시 루프 종료)
-    for music in music_order:
-
+    # for music in music_order:
+    for music in sorted_music:
         # 라디오에서 재생된 멜로디 복원
-        played_melody = played_melody_finder(music_dict[music]["melody"], music_dict[music]["time"])
+        # played_melody = played_melody_finder(music_dict[music]["melody"], music_dict[music]["time"])
+        played_melody = played_melody_finder(music[2], music[0])
 
         # 부분 문자열 비교 시작
-        i, j, cnt = 0, 0, 0
-        while i < len(m) and j < len(played_melody):
-            if m[i] == played_melody[j]:
-                cnt += 1
-                i += 1
-                j += 1
-                if cnt == len(m):
-                    return music
-                continue
-
-            cnt = 0
-            i = 0
-            j += 1
+        # i, j, cnt = 0, 0, 0
+        # while i < len(m) and j < len(played_melody):
+        #     if m[i] == played_melody[j]:
+        #         cnt += 1
+        #         i += 1
+        #         j += 1
+        #         if cnt == len(m):
+        #             return music[3]
+        #         continue
+        #
+        #     cnt = 0
+        #     i = 0
+        #     j += 1
+        if m in played_melody:
+            return music[3]
 
     return "(None)"
 
@@ -164,12 +172,7 @@ def solution(m, musicinfos):
 #     return ans
 
 
-b = ["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF", "13:00,13:05,WOW,ABCDEF", "13:00,13:05,HOW,ABCDEF"]
+b = ["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF", "13:00,13:05,WOW,ABCDEF", "13:00,13:05,HOW,ABCDEFFG"]
 a = "ABC"
 
 print(solution(a, b))
-
-temp = [1, 1, 1, 2, 3]
-tt = temp[::-1]
-i = tt.index(1) - 1
-print(tt[i])
